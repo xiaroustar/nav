@@ -1,8 +1,7 @@
 # 夏柔导航
 一个简洁的导航页，原创@XINGMOUREN Snavigation 夏柔二次修改图片、天气接口
 # 预览
-[img]https://tucdn.wpon.cn/2022/12/18/6cf740b185fd0.png[/img]
-
+![预览图](https://tucdn.wpon.cn/2022/12/18/6cf740b185fd0.png)
 # DEMO
 <a href="http://nav.aa1.cn" target="_blank">夏柔导航</a>
 
