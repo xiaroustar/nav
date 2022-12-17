@@ -6,6 +6,8 @@ $data = file_get_contents($api_url);
 $arr = json_decode($data, true);    // 将获取到的 JSON 数据解析成数组
 $temp = $arr['temp']; // 实时温度
 $city = $arr['city']; // 城市
+$wd= $arr['wd']; // 风向
+$wdspd = $arr['wdspd']; // 风速
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -67,7 +69,7 @@ $city = $arr['city']; // 城市
                         <span id="day">0&nbsp;月&nbsp;00&nbsp;日&nbsp;周一</span>
                     </div>
                     <div class="weather">
-                        <span>城市:<?php echo $city. ' 温度:'.$temp;?></span>°C
+                        <span><?php echo $city. '市 风向: '.$wd.' 风速: '.$wdspd.' 温度: '.$temp;?></span>°C
                     </div>
                 </div>
                 <!-- 搜索框 -->
