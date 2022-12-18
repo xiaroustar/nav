@@ -1,8 +1,7 @@
 <?php
 // 天气接口 https://api.aa1.cn/doc/api-tianqi-4.html
 // 根据城市ID（上面的接口文档有ID说明下载）替换下方 101070101
-$api_url = 'https://api.help.bj.cn/apis/weather/?id=101070101';
-$data = file_get_contents($api_url);
+$data = file_get_contents('https://v.api.aa1.cn/api/api-tianqi-4/?id=101070101');
 $arr = json_decode($data, true);    // 将获取到的 JSON 数据解析成数组
 $temp = $arr['temp']; // 实时温度
 $city = $arr['city']; // 城市
