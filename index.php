@@ -1,12 +1,36 @@
 <?php
+// 本地IP
+class guest_info{
+    function GetIP() {
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		//如果变量是非空或非零的值，则 empty()返回 FALSE。
+			$IP = explode(',',$_SERVER['HTTP_CLIENT_IP']);
+		}
+		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+			$IP = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
+		}
+		elseif (!empty($_SERVER['REMOTE_ADDR'])) {
+			$IP = explode(',',$_SERVER['REMOTE_ADDR']);
+		}
+		else {
+			$IP[0] = 'None';
+		}
+		return $IP[0];
+	}
+}
+$obj = new guest_info;
+$user_ip = $obj->GetIP();			//获取访客IP地址
+// 夏柔API 定制导航接口 无第二家 勿删
+$data = file_get_contents('http://v.api.aa1.cn/api/nav-api/?ip='.$user_ip);
 // 天气接口 https://api.aa1.cn/doc/api-tianqi-4.html
-// 根据城市ID（上面的接口文档有ID说明下载）替换下方 101070101
-$data = file_get_contents('https://v.api.aa1.cn/api/api-tianqi-4/?id=101070101');
-$arr = json_decode($data, true);    // 将获取到的 JSON 数据解析成数组
+$arr = json_decode($data, true);   
+$myip_city = $arr['city']; // 城市
 $temp = $arr['temp']; // 实时温度
 $city = $arr['city']; // 城市
 $wd= $arr['wd']; // 风向
 $wdspd = $arr['wdspd']; // 风速
+$yiyan= $arr['yiyan']; // 一言
+
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -122,6 +146,7 @@ $wdspd = $arr['wdspd']; // 风速
                         </div>
                     </div>
                 </div>
+                <p><?php echo $yiyan;?></p>
                 <!-- 书签页 -->
                 <div class="mark" style="display: none;">
                     <div class="tab">
