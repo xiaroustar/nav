@@ -21,14 +21,14 @@ class guest_info{
 $obj = new guest_info;
 $user_ip = $obj->GetIP();			//获取访客IP地址
 // 夏柔API 定制导航接口 无第二家 勿删
-$data = file_get_contents('http://v.api.aa1.cn/api/nav-api/?ip='.$user_ip);
+$data = file_get_contents('https://v.api.aa1.cn/api/nav-api/?ip='.$user_ip);
 // 天气接口 https://api.aa1.cn/doc/api-tianqi-4.html
 $arr = json_decode($data, true);   
 $myip_city = $arr['city']; // 城市
 $temp = $arr['temp']; // 实时温度
 $city = $arr['city']; // 城市
-$wd= $arr['wd']; // 风向
-$wdspd = $arr['wdspd']; // 风速
+$wd= $arr['wd']; // 温度
+$wdspd = $arr['wdspd']; // 天气
 $yiyan= $arr['yiyan']; // 一言
 
 ?>
@@ -92,7 +92,7 @@ $yiyan= $arr['yiyan']; // 一言
                         <span id="day">0&nbsp;月&nbsp;00&nbsp;日&nbsp;周一</span>
                     </div>
                     <div class="weather">
-                        <span><?php echo $city. '市 风向: '.$wd.' 风速: '.$wdspd.' 温度: '.$temp;?></span>°C
+                        <span><?php echo $city. ' 风度: '.$wd.' 天气: '.$wdspd.' 温度: '.$temp;?></span>°C
                     </div>
                 </div>
                 <!-- 搜索框 -->
@@ -574,7 +574,7 @@ $yiyan= $arr['yiyan']; // 一言
             <div class="power">Copyright&nbsp;&copy;&nbsp;2005
                 <script>
                     document.write(' - ' + (new Date()).getFullYear())
-                </script>&nbsp;<a href="https://nav.aa1.cn">夏柔</a>&nbsp;
+                </script>&nbsp;<a href="https://nav.aa1.cn">夏柔</a>&nbsp; &由字节跳动提供云计算服务
                 <!-- 以下信息请不要修改哦 -->
             </div>
         </div>
